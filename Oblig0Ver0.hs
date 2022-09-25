@@ -11,7 +11,7 @@ import Oblig0Common
 import System.IO
 
 main = do
-  -- Read user data
+  -- Read user datar 
   input <- getContents
   -- Process data using filters
   let datapoints = map read (lines input) :: [(Double, Double, Double)]
@@ -27,3 +27,4 @@ main = do
                 $ reverse
                 $ take dataLength processedData
   print stepCount
+
