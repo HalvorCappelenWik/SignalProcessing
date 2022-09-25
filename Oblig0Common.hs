@@ -14,7 +14,7 @@ hpd = _
 
 -- Extend a finite signal with an infinite constant past
 extend ::  Num a => [a] -> [a]
-extend [] = cycle [0]
+extend [] = repeat 0 
 extend [x] = repeat x
 extend (x:xs) = x : extend xs
 

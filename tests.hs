@@ -11,7 +11,7 @@ zeroCrossings (x:y:xs) = n + zeroCrossings (y:xs) where n = if (x > 0 && y <= 0)
 
 
 extend ::  Num a => [a] -> [a]
-extend [] = cycle [0]
+extend [] = repeat 0 
 extend [x] = repeat x
 extend (x:xs) = x : extend xs
 
