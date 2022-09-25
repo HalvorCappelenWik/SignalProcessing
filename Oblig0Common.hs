@@ -14,7 +14,9 @@ hpd = _
 
 -- Extend a finite signal with an infinite constant past
 extend ::  Num a => [a] -> [a]
-extend = _
+extend [] = cycle [0]
+extend [x] = repeat x
+extend (x:xs) = x : extend xs
 
 
 -- Apply a filter to a list of values
