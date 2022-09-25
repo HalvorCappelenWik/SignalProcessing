@@ -6,7 +6,8 @@ average xs = sum xs / fromIntegral (length xs)
 
 -- A simple lowpass filter with adjustable cut-off
 lpf :: (Fractional a) => Integer -> [a] -> a
-lpf = _
+lpf n xs = average (take (fromIntegral  n) xs )
+
 
 -- A simple high pass filter with adjustable cut-off
 hpf :: (Floating a) => Integer -> [a] -> a

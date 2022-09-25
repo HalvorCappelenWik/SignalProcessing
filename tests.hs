@@ -15,5 +15,9 @@ extend [] = repeat 0
 extend [x] = repeat x
 extend (x:xs) = x : extend xs
 
+-- A simple lowpass filter with adjustable cut-off
+lpf :: (Fractional a) => Integer -> [a] -> a
+lpf n xs = average (take (fromIntegral  n) xs )
+
 
 
