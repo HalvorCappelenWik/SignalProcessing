@@ -11,7 +11,7 @@ lpf n xs = average (take (fromIntegral  n) xs )
 
 -- A simple high pass filter with adjustable cut-off
 hpf :: (Floating a) => Integer -> [a] -> a
-hpd = _
+hpf n (x:xs) = x - (lpf n (x:xs))
 
 -- Extend a finite signal with an infinite constant past
 extend ::  Num a => [a] -> [a]
@@ -31,10 +31,10 @@ zeroCrossings [] = 0
 zeroCrossings [x] = 0 
 zeroCrossings (x:y:xs) = n + zeroCrossings (y:xs) where n = if (x > 0 && y <= 0) || (x < 0 && y >= 0) then 1 else 0 
 
-lowPassCutoff :: Intger
-lowPassCutoff = _
+lowPassCutoff :: Integer
+lowPassCutoff =  16
 highPassCutoff :: Integer
-highPassCutoff = _
+highPassCutoff =  12
 
 
 --interact 
