@@ -13,10 +13,7 @@ import System.IO
 
 
 main = interact countSteps 
-
-
-countSteps :: String -> String 
-countSteps content =  stepSensor (getContent (content))
+countSteps content = if stepSensor (getContent content) then "Step!" else content 
 
 
 getContent :: String -> [Double]
@@ -27,7 +24,7 @@ getContent input =
         processedData =
             applyFilter (hpf highPassCutoff) $
                 applyFilter (lpf lowPassCutoff) $
-                    summedData
+                    reverse summedData
                     in summedData
 
 
@@ -35,6 +32,6 @@ stepSensor :: [Double] -> String
 stepSensor [] = []
 stepSensor [_] = []
 stepSensor (x:y:ys) 
-    | x == y = []
-    | (x > 0 && y <= 0) =  "Step";  stepSensor (y:ys)
-    | otherwise = stepSensor (y:ys) 
+    |x == y = (x:y:ys)
+    |x > 0 && y <= 0 = "Step" 
+    | otherwise (x:y:ys)  stepSensor (y:ys)

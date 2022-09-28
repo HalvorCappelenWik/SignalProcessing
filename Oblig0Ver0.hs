@@ -10,6 +10,7 @@ import Oblig0Common
   )
 import System.IO
 
+main :: IO ()
 main = do
   -- Read user datar 
   input <- getContents
